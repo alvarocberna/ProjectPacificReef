@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Datos personales {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row col-9 m-auto d-flex flex-column pt-5">
+        <div class="col-6 m-auto d-flex flex-column border px-3 py-3 rounded">
+            <h2 class="col-9 m-auto mb-3 text-center fw-bold">
+                Habitación hotel
+            </h2>
+            <p>
+                Descripcion: {{ descripcion }}
+            </p>
+            <p>
+                Capacidad: {{ capacidad }}
+            </p>
+            <p>
+                Piso: {{ piso }}
+            </p>
+            <p>
+                Equipamiento: {{ equipamiento }}
+            </p>
+            <img src="{{ img_1.url }}">
+        </div>
+    </div>
+
+</div>
+{% endblock %}
