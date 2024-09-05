@@ -31,31 +31,12 @@ class Habitacion(models.Model):
     img3_habitacion = models.ImageField(upload_to="habitaciones", null=True)
     cod_hotel = models.ForeignKey(Hotel,  on_delete=models.CASCADE, db_column='cod_hotel')
     cod_categoria = models.ForeignKey(Categoria_Habitacion, on_delete=models.CASCADE, db_column='cod_categoria') 
-
-
-
-# class TipoUsuario(models.Model):
-#     cod_tipo_usuario = models.IntegerField(primary_key=True)
-#     descripcion_usuario = models.CharField(max_length=50)
-
-
-# class Usuario(models.Model):
-#     rut = models.IntegerField(primary_key=True)
-#     dv_rut = models.CharField(max_length=1)
-#     nombre = models.CharField(max_length=50)
-#     ap_paterno = models.CharField(max_length=50)
-#     ap_materno = models.CharField(max_length=50)
-#     correo = models.CharField(max_length=100)
-#     celular = models.IntegerField()
-#     pais = models.CharField(max_length=50, blank=True, null=True)
-#     idioma = models.CharField(max_length=50, blank=True, null=True)
-#     cod_tipo_usuario = models.ForeignKey(TipoUsuario, on_delete=models.CASCADE, db_column='cod_tipo_usuario')
         
 
-# class Reserva(models.Model):
-#     cod_reserva = models.IntegerField(primary_key=True)
-#     fecha_ingreso = models.DateField()
-#     fecha_salida = models.DateField()
-#     cantidad_personas = models.IntegerField()
-#     rut = models.ForeignKey(Usuario, on_delete=models.CASCADE, db_column='rut')
-#     cod_habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE, db_column='cod_habitacion')
+class Reserva(models.Model):
+    cod_reserva = models.IntegerField(primary_key=True)
+    fecha_ingreso = models.DateField()
+    fecha_salida = models.DateField()
+    cantidad_personas = models.IntegerField()
+    rut = models.ForeignKey(User, on_delete=models.CASCADE, db_column='id')
+    cod_habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE, db_column='cod_habitacion')
