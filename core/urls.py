@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import habitacion
+from .views import habitacion, registro, inicioSesion, inicio, perfil 
 
 urlpatterns = [
-        path('', habitacion),
+        path('habitaciones/', habitacion),
+        path('registro/', registro),
+        path('inicioSesion/', inicioSesion),
+        path('', inicio),
+        path('perfil/', perfil),
 ]

@@ -1,16 +1,17 @@
 from django.db import models
-# from django.contrib.auth import get_user_model
-# from django.conf import settings
-# from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+from django.conf import settings
+from django.contrib.auth.models import User
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE) 
+    role = models.CharField(max_length=20, choices=settings.ROLES)        
+
 
 class Hotel(models.Model):
     cod_hotel = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=50)
     direccion = models.CharField(max_length=200)
-
-    class Meta:
-        managed = False
-        db_table = 'core_hotel'
 
 
 class Categoria_Habitacion(models.Model):
@@ -29,7 +30,8 @@ class Habitacion(models.Model):
     img2_habitacion = models.ImageField(upload_to="habitaciones", null=True)
     img3_habitacion = models.ImageField(upload_to="habitaciones", null=True)
     cod_hotel = models.ForeignKey(Hotel,  on_delete=models.CASCADE, db_column='cod_hotel')
-    cod_categoria = models.ForeignKey(Categoria_Habitacion, on_delete=models.CASCADE, db_column='cod_categoria')
+    cod_categoria = models.ForeignKey(Categoria_Habitacion, on_delete=models.CASCADE, db_column='cod_categoria') 
+
 
 
 # class TipoUsuario(models.Model):
