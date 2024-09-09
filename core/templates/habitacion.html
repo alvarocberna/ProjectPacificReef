@@ -6,23 +6,28 @@
 <div class="container-fluid">
 
     <div class="row col-9 m-auto d-flex flex-column pt-5">
-        <div class="col-6 m-auto d-flex flex-column border px-3 py-3 rounded">
-            <h2 class="col-9 m-auto mb-3 text-center fw-bold">
-                Habitación hotel
-            </h2>
+        <div class="col-6 m-auto d-flex flex-column border px-5 py-5 rounded">
+            <h3 class="col-9 m-auto mb-3 text-center fw-bold">
+                Habitación número {{ habitacion.cod_habitacion }}
+            </h3>
             <p>
-                Descripcion: {{ descripcion }}
+                Descripcion: {{ habitacion.descripcion_general }}
             </p>
             <p>
-                Capacidad: {{ capacidad }}
+                Capacidad: {{ habitacion.capacidad }}
+                {% if habitacion.capacidad > 1 %}
+                personas.
+                {% else %}
+                persona.
+                {% endif %}
             </p>
             <p>
-                Piso: {{ piso }}
+                Piso: {{ habitacion.piso }}.
             </p>
             <p>
-                Equipamiento: {{ equipamiento }}
+                Equipamiento: {{ habitacion.equipamiento }}.
             </p>
-            <img src="{{ img_1.url }}">
+            <!-- <img src="{{ img_1.url }}">  -->
         </div>
     </div>
 

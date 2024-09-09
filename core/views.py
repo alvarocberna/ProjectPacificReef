@@ -5,26 +5,21 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 
-
-def habitacion(request):
-    descripcion = Habitacion.objects.all()[0].descripcion_general
-    capacidad = Habitacion.objects.all()[0].capacidad
-    piso = Habitacion.objects.all()[0].piso
-    equipamiento = Habitacion.objects.all()[0].equipamiento
-    img_1 = Habitacion.objects.all()[0].img1_habitacion
-    img_2 = Habitacion.objects.all()[0].img2_habitacion
-    img_3 = Habitacion.objects.all()[0].img3_habitacion
-    datos = { 
-        'descripcion': descripcion,
-        'capacidad': capacidad,
-        'piso': piso,
-        'equipamiento': equipamiento,
-        'img_1': img_1,
-        'img_2': img_2,
-        'img_3': img_3
-
+def habitacion(request, id):
+    habitacion = Habitacion.objects.get(cod_habitacion = id)
+    context = { 
+        'habitacion': habitacion,
     }
-    return render(request, 'habitacion.html', datos)
+    return render(request, 'habitacion.html', context)
+
+def habitaciones(request):
+    perfil = request.session.get('perfil')
+    habitaciones = Habitacion.objects.all()
+    context = {
+        'habitaciones': habitaciones,
+        'perfil': perfil,
+    }
+    return render(request, 'habitaciones.html', context)
 
 def registro(request):
     datos = {
