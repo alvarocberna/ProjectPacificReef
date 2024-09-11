@@ -9,47 +9,49 @@
     <title>{% block title %} {% endblock %} </title>
 </head>
 
-<body>
-    <!-- Barra de navegaciónn -->
-    <nav class="navbar navbar-expand-lg w-100 border-bottom">
-        <div class="container-fluid">
-            <!-- Logo  -->
-            <a class="navbar-brand" href="/">
-                <img src="{% static 'imgs/logo.png' %}" style="height: 50px" />
-            </a>
-            <!-- Boton para abrir y cerrar barra de navegación  -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Menú -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="w-100 navbar-nav mb-2 mb-lg-0 d-flex justify-content-end pe-lg-5">
-                    <!-- Opción 1 -->
-                    <li class="nav-item col-12 col-lg-2">
-                        <a class="nav-link active text-black text-center" aria-current="page"
-                            href="/habitaciones">Habitaciones</a>
-                    </li>
-                    <!-- Opción 2 -->
-                    <li class="nav-item col-12 col-lg-2">
-                        <a class="nav-link active text-black text-center" aria-current="page"
-                            href="/registro">Registro</a>
-                    </li>
-                    <!-- Opción 3 -->
-                    <li class="nav-item col-12 col-lg-2">
-                        <a class="nav-link active text-black text-center" aria-current="page"
-                            href="/inicioSesion">Inicio de
-                            sesión</a>
-                    </li>
-                </ul>
+<body style="height: 100%; background-color: rgb(230, 248, 255);">
+    <header style="background: linear-gradient(170deg, rgb(80, 41, 255), rgb(242, 243, 207))">
+        <!-- Barra de navegaciónn -->
+        <nav class="navbar navbar-expand-lg w-100 border-bottom">
+            <div class="container-fluid">
+                <!-- Logo  -->
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'imgs/logo.png' %}" style="height: 50px; border-radius: 16%;"  />
+                </a>
+                <!-- Boton para abrir y cerrar barra de navegación  -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Menú -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="w-100 navbar-nav mb-2 mb-lg-0 d-flex justify-content-end pe-lg-5">
+                        <!-- Opción 1 -->
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" aria-current="page"
+                                href="/habitaciones">Habitaciones</a>
+                        </li>
+                        <!-- Opción 2 -->
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" aria-current="page"
+                                href="/registro">Registro</a>
+                        </li>
+                        <!-- Opción 3 -->
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" aria-current="page"
+                                href="/inicioSesion">Inicio de
+                                sesión</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     {% block content %} {% endblock %}
 
-    <footer class="py-5 mt-5 border-top">
+    <footer class="py-5 mt-5 border-top" style="background: linear-gradient(170deg, rgb(98, 1, 209), rgb(197, 245, 248)); position: fixed; bottom: 0; left: 0; width: 100%;">
         <p id="" class="text-center text-body-secondary">CHILE, VIÑA DEL MAR | FONO:912345678 | EMAIL:
             CONTACTO@HOTELPACIFICREEF.CL</p>
         <p id="" class="text-center text-body-secondary">COPYRIGHT 2024 HOTEL PACIFIC REEF</p>
