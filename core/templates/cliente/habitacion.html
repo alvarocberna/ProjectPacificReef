@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %} Datos personales {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row col-10 col-md-8 col-lg-6 m-auto d-flex flex-column align-items-center pt-5">
+
+        {% if rol != 'admin' %}
+        <div class="col-10 m-auto d-flex flex-column border px-5 py-5 rounded">
+            <h3 class="col-9 m-auto mb-3 text-center fw-bold">
+                Habitación número {{ habitacion.cod_habitacion }}
+            </h3>
+            <p>
+                Descripcion: {{ habitacion.descripcion_general }}
+            </p>
+            <p>
+                Capacidad: {{ habitacion.capacidad }}
+                {% if habitacion.capacidad > 1 %}
+                personas.
+                {% else %}
+                persona.
+                {% endif %}
+            </p>
+            <p>
+                Piso: {{ habitacion.piso }}.
+            </p>
+            <p>
+                Equipamiento: {{ habitacion.equipamiento }}.
+            </p>
+            <!-- <img src="{{ img_1.url }}">  -->
+        </div>
+        {% endif %}
+
+        {% if rol == 'admin' %}
+        <div class="col-10" style="margin-bottom: 300px;">
+            <h3 class="col-6 col-md-8 m-auto mb-3 text-center fw-bold">
+                Habitación número {{ habitacion.cod_habitacion }}
+            </h3>
+            <form method="POST" class="d-flex flex-column justify-content-center">
+                {% csrf_token %}
+                <div class="d-flex flex-column mb-2">
+                    <label for="cod_habitacion" class="form-label">Número de habitación:</label>
+                    <input name="cod_habitacion" id="cod_habitacion" value="{{ habitacion.cod_habitacion }}"
+                        type="number" class="rounded">
+                </div>
+                <div class="d-flex flex-column mb-2">
+                    <label for="descripcion_general" class="form-label">Descripción:</label>
+                    <input name="descripcion_general" id="descripcion_general"
+                        value="{{ habitacion.descripcion_general }}" type="string" class="rounded">
+                </div>
+                <div class="d-flex flex-column mb-2">
+                    <label for="capacidad" class="form-label">Capacidad:</label>
+                    <input name="capacidad" id="capacidad" value="{{ habitacion.capacidad }}" type="number"
+                        class="rounded">
+                </div>
+                <div class="d-flex flex-column mb-2">
+                    <label for="piso" class="form-label">Piso:</label>
+                    <input name="piso" id="piso" value="{{ habitacion.piso }}" type="number" class="rounded">
+                </div>
+                <div class="d-flex flex-column mb-5">
+                    <label for="equipamiento" class="form-label">Equipamiento:</label>
+                    <input name="equipamiento" id="equipamiento" value="{{ habitacion.equipamiento }}" type="string"
+                        class="rounded">
+                </div>
+                <button type="submit" class="btn btn-success rounded">
+                    Actualizar
+                </button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

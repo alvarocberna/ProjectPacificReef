@@ -3,9 +3,36 @@
 {% block title %} Datos personales {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row col-9 m-auto d-flex flex-column pt-5">
-        Inicio
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center px-0">
+
+    <!-- Portada -->
+    <div class="row w-100 mx-0 d-flex flex-column mb-5">
+        <div class="portada col-12 d-flex align-items-center justify-content-center">
+            <p class="mb-0 text-white fw-bold display-3" style="text-shadow: 5px 5px 5px black;">Hotel Pacific Reef
+            </p>
+        </div>
+    </div>
+
+    <!-- Habitaciones -->
+    <div class="row col-10 col-md-9 d-flex mb-5">
+        <h2 class="fw-bold mb-4 m-auto display-6">Habitaciones ideales para tu descanso</h2>
+        <div class="d-flex m-auto flex-column flex-md-row justify-content-around ">
+            <div class="col-5">
+                <div class="habTurista"></div>
+                <div class="d-flex justify-content-center align-items-center"
+                    style="background-color: #82D8DD; height: 80px; border-radius: 0px 0px 50px 50px;">
+                    <p class="h4" style="color: #00636E;">Habitación turista</p>
+                </div>
+            </div>
+            <div class="col-5 border">
+                <div class="habPremium"></div>
+                <div class="d-flex justify-content-center align-items-center"
+                    style="background-color: #82D8DD; height: 80px; border-radius: 0px 0px 50px 50px;">
+                    <p class="h4" style="color: #00636E;">Habitación premium</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </div>

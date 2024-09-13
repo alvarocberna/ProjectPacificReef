@@ -5,44 +5,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'css_bs/bootstrap.min.css' %}">
     <title>{% block title %} {% endblock %} </title>
 </head>
 
-<body style="height: 100%; background-color: rgb(230, 248, 255);">
-    <header style="background: linear-gradient(170deg, rgb(80, 41, 255), rgb(242, 243, 207))">
+<body style="height: 100%;">
+    <header>
         <!-- Barra de navegaciónn -->
         <nav class="navbar navbar-expand-lg w-100 border-bottom">
             <div class="container-fluid">
                 <!-- Logo  -->
+                {% if user.is_anonymous %}
                 <a class="navbar-brand" href="/">
-                    <img src="{% static 'imgs/logo.png' %}" style="height: 50px; border-radius: 16%;"  />
+                    <img src="{% static 'imgs/logo.png' %}" style="height: 50px; border-radius: 16%;" />
                 </a>
+                {% endif %}
+                {% if rol == 'cliente' %}
+                <a class="navbar-brand" href="/reservas">
+                    <img src="{% static 'imgs/logo.png' %}" style="height: 50px; border-radius: 16%;" />
+                </a>
+                {% endif %}
+                {% if rol == 'admin' %}
+                <a class="navbar-brand" href="/panel">
+                    <img src="{% static 'imgs/logo.png' %}" style="height: 50px; border-radius: 16%;" />
+                </a>
+                {% endif %}
                 <!-- Boton para abrir y cerrar barra de navegación  -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- Menú -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="w-100 navbar-nav mb-2 mb-lg-0 d-flex justify-content-end pe-lg-5">
-                        <!-- Opción 1 -->
-                        <li class="nav-item col-12 col-lg-2">
-                            <a class="nav-link active text-black text-center" aria-current="page"
-                                href="/habitaciones">Habitaciones</a>
-                        </li>
-                        <!-- Opción 2 -->
+                        {% if user.is_anonymous %}
                         <li class="nav-item col-12 col-lg-2">
                             <a class="nav-link active text-black text-center" aria-current="page"
                                 href="/registro">Registro</a>
                         </li>
-                        <!-- Opción 3 -->
+                        {% endif %}
+                        {% if user.is_anonymous %}
                         <li class="nav-item col-12 col-lg-2">
                             <a class="nav-link active text-black text-center" aria-current="page"
                                 href="/inicioSesion">Inicio de
                                 sesión</a>
                         </li>
+                        {% endif %}
+                        {% if rol == 'cliente' %}
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" aria-current="page"
+                                href="/mis-reservas">Mis
+                                reservas</a>
+                        </li>
+                        {% endif %}
+                        {% if rol == 'cliente' %}
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" aria-current="page"
+                                href="/habitaciones">Reservar habitación</a>
+                        </li>
+                        {% endif %}
+                        {% if rol == 'cliente' %}
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" aria-current="page"
+                                href="/perfil">Perfil</a>
+                        </li>
+                        {% endif %}
+                        {% if rol == 'admin' %}
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" aria-current="page"
+                                href="/panel">Panel</a>
+                        </li>
+                        {% endif %}
+                        {% if rol == 'admin' %}
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" href="/reservas" aria-current="page">Ver
+                                reservas</a>
+                        </li>
+                        {% endif %}
+                        {% if rol == 'admin' %}
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" aria-current="page"
+                                href="/habitaciones">Habitaciones</a>
+                        </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <li class="nav-item col-12 col-lg-2">
+                            <a class="nav-link active text-black text-center" href="/cerrarSesion"
+                                aria-current="page">Salir</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -51,7 +104,7 @@
 
     {% block content %} {% endblock %}
 
-    <footer class="py-5 mt-5 border-top" style="background: linear-gradient(170deg, rgb(98, 1, 209), rgb(197, 245, 248)); position: fixed; bottom: 0; left: 0; width: 100%;">
+    <footer class="py-5 mt-5 border-top" style="margin-top: 400px; width: 100%;">
         <p id="" class="text-center text-body-secondary">CHILE, VIÑA DEL MAR | FONO:912345678 | EMAIL:
             CONTACTO@HOTELPACIFICREEF.CL</p>
         <p id="" class="text-center text-body-secondary">COPYRIGHT 2024 HOTEL PACIFIC REEF</p>

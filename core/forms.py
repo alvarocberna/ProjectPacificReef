@@ -11,3 +11,9 @@ class FormInicioSesion(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+
+class FormHabitacion(ModelForm):
+    class Meta:
+        model = Habitacion
+        # fields = ['descripcion_general', 'capacidad', 'piso']
+        fields = ['cod_habitacion', 'descripcion_general', 'capacidad', 'piso', 'equipamiento',]

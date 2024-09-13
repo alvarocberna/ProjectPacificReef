@@ -1,25 +1,19 @@
 from django.shortcuts import render, redirect
 from .models import Habitacion, UserProfile
-from .forms import FormRegistro, FormInicioSesion
+from .forms import FormRegistro, FormInicioSesion, FormHabitacion
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 
-def habitacion(request, id):
-    habitacion = Habitacion.objects.get(cod_habitacion = id)
-    context = { 
-        'habitacion': habitacion,
-    }
-    return render(request, 'habitacion.html', context)
-
-def habitaciones(request):
-    perfil = request.session.get('perfil')
-    habitaciones = Habitacion.objects.all()
+def base(request):
+    usuario = request.user
+    profile = UserProfile.objects.get(user = usuario)
+    rol = profile.role
     context = {
-        'habitaciones': habitaciones,
-        'perfil': perfil,
+        'rol': rol,
     }
-    return render(request, 'habitaciones.html', context)
+    return render(request, 'base.html', context)
+
 
 def registro(request):
     datos = {
@@ -52,7 +46,7 @@ def registro(request):
                                                         password=request.POST["password"],
                                                         )
                         user.save()
-                        profile = UserProfile.objects.create(user=user, role = 'Cliente')
+                        profile = UserProfile.objects.create(user=user, role = 'cliente')
                         profile.save()                      
                         return redirect('/')
                     except IntegrityError:
@@ -81,11 +75,82 @@ def inicioSesion(request):
             profile = UserProfile.objects.get(user=usuario)
             request.session['perfil'] = profile.role
             login(request, usuario)
-            return redirect('/perfil')
+            if profile.role == 'admin':
+                return redirect('/panel')
+            else:
+                return redirect('/perfil')
     return render(request, 'inicioSesion.html', datos)
 
 def inicio(request):
     return render(request, 'inicio.html')
 
+def habitacion(request, id):
+    habitacion = Habitacion.objects.get(cod_habitacion = id)
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    context = { 
+        'habitacion': habitacion,
+        'usuario': usuario,
+        'rol': rol,
+    }
+    if request.method == 'POST':
+        formulario = FormHabitacion(data=request.POST, instance=habitacion)
+        if formulario.is_valid:
+            formulario.save() 
+    return render(request, 'cliente/habitacion.html', context)
+
+def habitaciones(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    habitaciones = Habitacion.objects.all()
+    context = {
+        'habitaciones': habitaciones,
+        'usuario': usuario,
+        'rol': rol,
+    }
+    return render(request, 'cliente/habitaciones.html', context)
+
+def verReservas(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    context = {
+        'rol': rol,
+    }
+    return render(request, 'cliente/reservas.html', context)
+
+def gestionarReservas(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    context = {
+        'rol': rol,
+    }
+    return render(request, 'admin/reservas.html', context)
+
+def gestionarReserva(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    context = {
+        'rol': rol,
+    }
+    return render(request, 'admin/reserva.html', context)
+
 def perfil(request):
-    return render(request, 'perfil.html')
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    context = {
+        'usuario': usuario,
+        'rol': rol,
+    }
+    return render(request, 'cliente/perfil.html', context)
+
+def panel(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    context = {
+        'rol': rol
+    }
+    return render(request, 'admin/panel.html', context)
+
+def cerrarSesion(request):
+    logout(request)
+    return redirect('/')
