@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relacion_Habitacion_Reserva" directorySegmentName="seg_0" id="1B4CDDEE-186A-68E5-C999-F48B91A53807">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 04:09:06 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<sourcePk>A805ECD8-A334-33D9-CC27-DF4834CEC5A5</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>tiene</nameOnSource>
+<nameOnTarget>pertenece</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>A3855DA3-96CF-7E84-E3C1-A08732D29454</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>DFAF9C15-BB74-F47B-EAA9-A2677FB8CB63</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

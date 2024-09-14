@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="7F35B6A6-F2E1-9B14-FE72-965E09FCE49F">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 02:50:55 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

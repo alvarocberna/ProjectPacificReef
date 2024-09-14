@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relacion_Habitacion_Categoria" directorySegmentName="seg_0" id="0142F86B-7C7D-C480-DEB7-1661FDD5F968">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 04:10:16 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<sourcePk>31812965-95AE-A2D9-7E16-9FC6CB1E48E5</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>tiene</nameOnSource>
+<nameOnTarget>pertenece</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>4C020FED-D3D3-DB87-590F-C06F96ADE2CA</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>A3855DA3-96CF-7E84-E3C1-A08732D29454</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

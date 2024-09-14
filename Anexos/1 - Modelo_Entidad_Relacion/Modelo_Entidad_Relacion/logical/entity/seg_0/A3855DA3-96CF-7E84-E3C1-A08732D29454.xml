@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A3855DA3-96CF-7E84-E3C1-A08732D29454" name="HABITACION">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:31:08 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cod_habitacion" id="387F37F7-6E14-56C6-D48A-C6D031EC26FE">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:31:28 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion_general" id="8A7DCC2E-8260-9E7D-6FC1-533F8384E092">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:31:58 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="capacidad" id="54D08C0C-09C7-85A8-90CC-55D103C949FE">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:33:03 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="piso" id="B668131F-ECB2-E618-DF15-5B08E14912C8">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:33:21 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="equipamiento" id="621A1149-7FC2-D7D8-28FC-DD739FC61424">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:33:44 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cod_hotel" id="9C98F922-6A1C-CF9C-04CC-0ED30445BD9F">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:43:05 UTC</createdTime>
+<generatorID>C5B2F2BB-0EAD-1DE8-B32D-40B24C777140</generatorID>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<referedAttribute>2E4BFA86-FAA9-CA39-9F06-B765DF82144F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cod_categoria" id="6848B316-68CB-D553-BE3D-4CA300B4FD9D">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 04:10:16 UTC</createdTime>
+<generatorID>0142F86B-7C7D-C480-DEB7-1661FDD5F968</generatorID>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<referedAttribute>FA7D09FA-6BED-8C80-A08D-621570522A08</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A805ECD8-A334-33D9-CC27-DF4834CEC5A5" name="HABITACION PK">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:31:56 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>387F37F7-6E14-56C6-D48A-C6D031EC26FE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

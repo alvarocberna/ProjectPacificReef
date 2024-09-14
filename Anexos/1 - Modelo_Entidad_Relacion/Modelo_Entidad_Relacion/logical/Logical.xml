@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="CFE46B4F-A080-AFBB-11F3-CC78B186316A" mainViewID="FEA851A4-C68E-A249-26E6-AEA4876AD3E2">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 02:50:55 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

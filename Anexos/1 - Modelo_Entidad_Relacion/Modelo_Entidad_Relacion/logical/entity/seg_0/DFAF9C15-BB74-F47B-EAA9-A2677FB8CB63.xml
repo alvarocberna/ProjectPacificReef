@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DFAF9C15-BB74-F47B-EAA9-A2677FB8CB63" name="RESERVA">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:34:38 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cod_reserva" id="310B39F6-C90A-41E6-8A73-37FFC7A3B752">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:35:02 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_ingreso" id="9EBCC863-A55D-14FB-6D70-A423E620CBF6">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:35:19 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_salida" id="30C89556-B8A5-9256-8E48-9EFB5474C407">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:35:33 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cantidad_personas" id="80963637-4270-5D9B-A95F-EE76E9F285F0">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:35:46 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cod_habitacion" id="BD94A095-9F40-B679-7806-100E9DA0CE9E">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 04:09:06 UTC</createdTime>
+<generatorID>1B4CDDEE-186A-68E5-C999-F48B91A53807</generatorID>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<referedAttribute>387F37F7-6E14-56C6-D48A-C6D031EC26FE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rut" id="4EED967A-5004-CB32-5930-5B504145ADF4">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 04:11:47 UTC</createdTime>
+<generatorID>7C2B55A8-2B4D-E7C8-883A-62BE8D6F2DCD</generatorID>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<referedAttribute>FAC4EA86-B065-1E32-343A-99F38560A550</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="70D8EDC6-D348-716F-F742-57615EB03102" name="RESERVA PK">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:35:17 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>310B39F6-C90A-41E6-8A73-37FFC7A3B752</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

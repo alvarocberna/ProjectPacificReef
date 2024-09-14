@@ -1,0 +1,154 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="28B8A8ED-4148-BD6E-C9E4-E70995077A48" name="USUARIO">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:36:54 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="rut" id="FAC4EA86-B065-1E32-343A-99F38560A550">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:37:03 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dv_rut" id="DB3EF8C7-1ACE-A5F0-153E-8E05477507A4">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:37:30 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="3C81A89A-C06F-2621-A1B7-2A8C0B6FBE44">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:37:45 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ap_paterno" id="63516964-A55B-1EF2-40B4-CF99B00DF72B">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:37:59 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ap_materno" id="163ED9A8-78F5-4877-A4F0-C6AFC92D80FC">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:38:10 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="DF173CFD-3EAB-DB24-AD5E-37C0E05A8C21">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:38:21 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="celular" id="8CA7079C-1798-9003-7E51-5378ABD1A41B">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:39:30 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,9,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_profile" id="006D0BDC-B135-0C5C-7772-4E2B1A5EC8D3">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 04:12:32 UTC</createdTime>
+<generatorID>BF510109-38B2-4AED-593D-4CE6FA07A9AF</generatorID>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<referedAttribute>F8732377-E1CD-D4C4-2EEE-C3F97B3A4EAD</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cod_idioma" id="34F6A786-AB4C-8DAC-FBAA-34A0E55C9649">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 04:15:36 UTC</createdTime>
+<generatorID>34DC0A8E-C74D-221E-C3B2-F1196311D2B0</generatorID>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<referedAttribute>B4DEE35D-C877-BA4E-89D3-C431357464F8</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D27EED3B-FECD-AEC7-FC20-E4C32503FD95" name="USER PK">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 03:37:29 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>FAC4EA86-B065-1E32-343A-99F38560A550</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relacion_Usuario_Idioma" directorySegmentName="seg_0" id="34DC0A8E-C74D-221E-C3B2-F1196311D2B0">
+<createdBy>cbern</createdBy>
+<createdTime>2024-09-11 04:15:36 UTC</createdTime>
+<ownerDesignName>Modelo_Entidad_Relacion</ownerDesignName>
+<engineerTo>
+<item key="539E5304-8D48-5E10-3C5E-4C7B8E65F599" value="true"/>
+</engineerTo>
+<sourcePk>EE230BFD-8340-A35F-7CEF-2A082B028A96</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>pertenece</nameOnSource>
+<nameOnTarget>habla</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>C8D9D68B-235A-EF99-5C6E-A92B3FA53BE5</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>28B8A8ED-4148-BD6E-C9E4-E70995077A48</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
