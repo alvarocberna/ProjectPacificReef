@@ -15,5 +15,9 @@ class FormInicioSesion(ModelForm):
 class FormHabitacion(ModelForm):
     class Meta:
         model = Habitacion
-        # fields = ['descripcion_general', 'capacidad', 'piso']
         fields = ['cod_habitacion', 'descripcion_general', 'capacidad', 'piso', 'equipamiento',]
+
+class FormAddHabitacion(ModelForm):
+    class Meta:
+        model = Habitacion
+        fields = ['cod_habitacion', 'descripcion_general', 'capacidad', 'piso', 'equipamiento', 'img1_habitacion', 'img2_habitacion', 'img3_habitacion', 'cod_categoria', 'cod_hotel']

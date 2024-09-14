@@ -8,23 +8,27 @@
     <div class="row col-9 m-auto d-flex flex-column pt-5">
         {% if rol == 'cliente' %}
         {% for hab in habitaciones %}
-        <a class="col-6 m-auto d-flex border px-4 py-2 mb-1 rounded" style="text-decoration: none; color: black;"
-            href="{% url 'habitacion' hab.cod_habitacion %}">
+        <a class="col-10 col-md-6 m-auto d-flex border px-4 py-2 mb-1 rounded"
+            style="text-decoration: none; color: black;" href="{% url 'habitacion' hab.cod_habitacion %}">
             <p class="mb-0">Habitacion número {{ hab.cod_habitacion }}</p>
         </a>
         {% endfor %}
         {% endif %}
 
         {% if rol == 'admin' %}
+        <a href="/add-habitacion" class="col-10 col-md-6 m-auto mb-4 btn btn-success rounded">
+            Añadir habitación
+        </a>
         {% for hab in habitaciones %}
-        <div class="col-6 m-auto d-flex justify-content-between border align-items-center px-4 py-2 mb-1 rounded">
-            <p class="mb-0">Habitacion númerooo {{ hab.cod_habitacion }}</p>
+        <div
+            class="col-10 col-md-6 m-auto d-flex justify-content-between border align-items-center px-4 py-2 mb-1 rounded">
+            <p class="mb-0">Habitacion número {{ hab.cod_habitacion }}</p>
             <div class="border">
                 <a href="{% url 'habitacion' hab.cod_habitacion %}" class="btn btn-primary">
                     Modificar
                 </a>
-                <a href="{% url 'habitacion' hab.cod_habitacion %}" class="btn btn-danger">
-                    Eliminar
+                <a class="btn btn-success">
+                    Ver reservas
                 </a>
 
             </div>

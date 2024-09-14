@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Habitacion, UserProfile
-from .forms import FormRegistro, FormInicioSesion, FormHabitacion
+from .models import Habitacion, UserProfile, Hotel, Categoria_Habitacion
+from .forms import FormRegistro, FormInicioSesion, FormHabitacion, FormAddHabitacion
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
@@ -98,6 +98,35 @@ def habitacion(request, id):
         if formulario.is_valid:
             formulario.save() 
     return render(request, 'cliente/habitacion.html', context)
+
+def addHabitacion(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    context = { 
+        'usuario': usuario,
+        'rol': rol,
+    }
+    if request.method == 'POST':
+        hotel = Hotel.objects.get(pk=1)
+        if request.POST["cod_categoria"] == 1:
+            categoria = Categoria_Habitacion.objects.get(pk=1)
+        else:
+            categoria = Categoria_Habitacion.objects.get(pk=2)
+        newHabitacion = Habitacion.objects.create(
+                                                    cod_habitacion = request.POST["cod_habitacion"],
+                                                    descripcion_general = request.POST["descripcion_general"],
+                                                    capacidad = request.POST["capacidad"],
+                                                    piso = request.POST["piso"],
+                                                    equipamiento = request.POST["equipamiento"],
+                                                    img1_habitacion = request.POST["img1_habitacion"],
+                                                    img2_habitacion = request.POST["img2_habitacion"],
+                                                    img3_habitacion = request.POST["img3_habitacion"],
+                                                    cod_hotel = hotel,
+                                                    cod_categoria = categoria,
+                                                )
+        newHabitacion.save()
+    return render(request, 'admin/addhabitacion.html', context)
+
 
 def habitaciones(request):
     usuario = request.user
