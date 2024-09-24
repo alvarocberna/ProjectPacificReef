@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Habitacion seleccionada {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid d-flex flex-column">
+
+    <div class="row col-10 col-md-8 col-lg-6 border rounded px-3 py-3 my-5 m-auto">
+        <h3 class="h2">Habitación número {{ habitacion.cod_habitacion }}</h3>
+        <p>
+            Descripcion: {{ habitacion.descripcion_general }}
+        </p>
+        <p>
+            Capacidad para {{ habitacion.capacidad }} personas.
+        </p>
+        <p>
+            Piso número {{ habitacion.piso }}
+        </p>
+        <p>
+            Equipado con {{ habitacion.equipamiento }}
+        </p>
+        <p>
+            Fecha ingreso: {{ fechaIngreso }}
+        </p>
+        <p>
+            Fecha salida: {{ fechaSalida }}
+        </p>
+        <form method="POST" class="d-flex">
+            {% csrf_token %}
+            <button class="btn btn-primary my-3 col-12 col-md-4 col-lg-6 m-auto" type="submit">Confirmar
+                reserva</button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

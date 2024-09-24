@@ -4,8 +4,18 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row col-9 m-auto d-flex flex-column pt-5" style="height: 500px;">
-        Mis reservas
+    <div class="row col-8 m-auto d-flex flex-column pt-5">
+        <h2 class="h2 mb-5">Mis reservas</h2>
+        {% for reserva in reservas %}
+        <div class="border rounded col-12 m-auto px-3 py-4 mb-3" style="background-color: #82D8DD;">
+            <div class="col-12 col-md-9 m-auto">
+                <p class="h5 mb-3">Habitacion n° {{ reserva.cod_habitacion.cod_habitacion }}</p>
+                <p class="mb-1">Fecha de ingreso: {{ reserva.fecha_ingreso }}</p>
+                <p class="mb-1">Fecha de salida: {{ reserva.fecha_salida }}</p>
+                <p class="mb-1">Número de personas: {{ reserva.cantidad_personas }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 
 </div>

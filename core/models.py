@@ -34,7 +34,7 @@ class Habitacion(models.Model):
         
 
 class Reserva(models.Model):
-    cod_reserva = models.IntegerField(primary_key=True)
+    cod_reserva = models.AutoField(primary_key=True)
     fecha_ingreso = models.DateField()
     fecha_salida = models.DateField()
     cantidad_personas = models.IntegerField()

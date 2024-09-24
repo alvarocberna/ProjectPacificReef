@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Habitaciones disponibles {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid d-flex flex-column">
+
+    <div class="row col-10 col-md-9 m-auto my-5">
+        <h3 class="h2">
+            Habitaciones disponibles
+        </h3>
+    </div>
+
+    <div class="row d-flex m-auto col-10 col-md-9" style="cursor: pointer;">
+        {% for habD in habDisponibles %}
+        <a href="{% url 'confirmarReserva' habD.cod_habitacion %}" class="col-1 border mx-1 rounded mb-1"
+            style="text-decoration: none; background-color: #84EB57; color: black">
+            <p class="text-center my-2">{{ habD.cod_habitacion }}</p>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="row col-10 col-md-9 m-auto my-5">
+        <h3 class="h2">
+            Habitaciones no disponibles
+        </h3>
+    </div>
+
+    <div class="row d-flex m-auto col-10 col-md-9">
+        {% for habR in numHabReservadas %}
+        <div class="col-1 border mx-1 rounded mb-1" style="cursor: pointer; background-color: #EB534C;">
+            <p class="text-center my-2">{{ habR.cod_habitacion }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</div>
+
+{% endblock %}

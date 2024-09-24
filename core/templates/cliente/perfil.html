@@ -5,7 +5,12 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row col-9 m-auto d-flex flex-column pt-5" style="height: 500px;">
-        Perfil {{ usuario.username }}
+        <div class="col-12 py-4 px-3 col-md-8 col-lg-6 mx-auto border rounded d-flex flex-column">
+            <p>Usuario: {{ usuario.username }}</p>
+            <p>Nombre: {{ usuario.first_name }}</p>
+            <p>Apellido: {{ usuario.last_name }}</p>
+            <p>Correo: {{ usuario.email }}</p>
+        </div>
     </div>
 
 </div>

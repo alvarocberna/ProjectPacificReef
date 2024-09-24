@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Buscar habitación {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid col-12 d-flex flex-column">
+
+    <div class="row col-10 col-md-9 m-auto my-5">
+        <h3 class="h2">
+            Buscar habitación
+        </h3>
+    </div>
+
+    <form method="POST" class="row col-10 mb-5 col-lg-9 m-auto d-flex flex-column">
+        {% csrf_token %}
+        <h4 class="mb-3">1 - Seleccionar fecha</h4>
+        <div class="d-flex flex-column flex-lg-row justify-content-around">
+            <div class="form-group col-12 col-md-5">
+                <label for="dateIngreso">Fecha inicio:</label>
+                <input type="date" class="form-control" name="dateIngreso" id="dateIngreso"
+                    placeholder="Selecciona una fecha">
+            </div>
+            <div class="form-group col-12 col-md-5">
+                <label for="dateSalida">Fecha fin:</label>
+                <input type="date" class="form-control" name="dateSalida" id="dateSalida"
+                    placeholder="Selecciona una fecha">
+            </div>
+        </div>
+        <button type="submit" class="col-10 col-md-6 col-lg-3 m-auto my-5 btn btn-primary">Buscar</button>
+    </form>
+
+</div>
+
+{% endblock %}

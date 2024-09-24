@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
-from .models import Habitacion, UserProfile, Hotel, Categoria_Habitacion
+from .models import Habitacion, UserProfile, Hotel, Categoria_Habitacion, Reserva
 from .forms import FormRegistro, FormInicioSesion, FormHabitacion, FormAddHabitacion
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
+from django.utils import timezone
+from datetime import datetime
+from django.contrib import messages
 
 def base(request):
     usuario = request.user
@@ -84,6 +87,82 @@ def inicioSesion(request):
 def inicio(request):
     return render(request, 'inicio.html')
 
+def reservarHabitacion(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    if request.method == 'POST':
+        # Obtenemos la fecha del formulario
+        fechaIngresoInput = request.POST["dateIngreso"]
+        fechaSalidaInput = request.POST["dateSalida"]
+        # Convertirmos la fecha a un objeto datetime
+        fechaIngresoFormat = datetime.strptime(fechaIngresoInput, '%Y-%m-%d')
+        fechaSalidaFormat = datetime.strptime(fechaSalidaInput, '%Y-%m-%d')
+        # Le damos un formato específico a las fechas
+        fechaIngreso = fechaIngresoFormat.strftime('%d-%m-%Y')
+        fechaSalida = fechaSalidaFormat.strftime('%d-%m-%Y')
+        # asignamos a las variables de sesion el valor de fecha ingreso y salida
+        request.session['fecha_ingreso'] = fechaIngresoFormat.strftime('%Y-%m-%d')
+        request.session['fecha_salida'] = fechaSalidaFormat.strftime('%Y-%m-%d')
+        # Obtenemos las habitaciones que ya estén reservadas
+        numHabReservadas = []
+        for res in Reserva.objects.all():
+            if ((fechaIngreso <= res.fecha_ingreso.strftime('%d-%m-%Y')) and (fechaSalida >= res.fecha_salida.strftime('%d-%m-%Y'))):
+                numHabReservadas.append(res.cod_habitacion)
+            elif ((fechaIngreso >= res.fecha_ingreso.strftime('%d-%m-%Y')) and (fechaIngreso <= res.fecha_salida.strftime('%d-%m-%Y'))):
+                numHabReservadas.append(res.cod_habitacion)
+            elif ((fechaSalida >= res.fecha_ingreso.strftime('%d-%m-%Y')) and (fechaSalida <= res.fecha_salida.strftime('%d-%m-%Y'))):
+                numHabReservadas.append(res.cod_habitacion)
+        habDisponibles = []
+        for hab in Habitacion.objects.all():
+            habDisponibles.append(hab)
+        for hab in habDisponibles:
+            for num in numHabReservadas:
+                if hab.cod_habitacion == num.cod_habitacion:
+                    habDisponibles.remove(hab)         
+        context = {
+            'usuario': usuario,
+            'rol': rol,
+            'fechaInicio': fechaIngreso,
+            'fechaSalida': fechaSalida,
+            'numHabReservadas': numHabReservadas,
+            'habDisponibles': habDisponibles,
+        }
+        return render(request, 'cliente/habitaciones-disponibles.html', context)
+    else:
+        context = {
+            'usuario': usuario,
+            'rol': rol,
+        }
+        return render(request, 'cliente/buscar-habitacion.html', context)
+    
+def confirmarReserva(request, id):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    habitacion = Habitacion.objects.get(cod_habitacion = id)
+    #campos de nueva reserva
+    fechaIngreso = request.session.get('fecha_ingreso')
+    fechaSalida = request.session.get('fecha_salida')
+    rut = User.objects.get(pk=usuario.id) 
+    cod_habitacion = Habitacion.objects.get(pk=id)
+    context = {
+        'fechaIngreso': fechaIngreso,
+        'fechaSalida': fechaSalida,
+        'habitacion': habitacion,
+        'usuario': usuario,
+        'rol': rol,
+    }
+    if request.method == 'POST':
+        newReserva = Reserva.objects.create(
+                        fecha_ingreso = fechaIngreso,
+                        fecha_salida = fechaSalida,
+                        cantidad_personas = habitacion.capacidad,
+                        rut = rut,
+                        cod_habitacion = cod_habitacion,
+        )
+        newReserva.save()
+        return redirect('/mis-reservas')
+    return render(request, 'cliente/confirmar-reserva.html', context)
+
 def habitacion(request, id):
     habitacion = Habitacion.objects.get(cod_habitacion = id)
     usuario = request.user
@@ -142,8 +221,10 @@ def habitaciones(request):
 def verReservas(request):
     usuario = request.user
     rol = UserProfile.objects.get(user = usuario).role
+    reservas = Reserva.objects.filter(rut = usuario.id)
     context = {
         'rol': rol,
+        'reservas': reservas,
     }
     return render(request, 'cliente/reservas.html', context)
 
