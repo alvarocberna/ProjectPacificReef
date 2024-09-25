@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Habitacion, UserProfile, Hotel, Categoria_Habitacion, Reserva
-from .forms import FormRegistro, FormInicioSesion, FormHabitacion, FormAddHabitacion
+from .forms import FormRegistro, FormInicioSesion, FormHabitacion, FormDatosPersonales
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
@@ -251,6 +251,10 @@ def perfil(request):
         'usuario': usuario,
         'rol': rol,
     }
+    if request.method == 'POST':
+        formDatosPersonales = FormDatosPersonales(data=request.POST, instance=usuario)
+        if formDatosPersonales.is_valid:
+            formDatosPersonales.save() 
     return render(request, 'cliente/perfil.html', context)
 
 def panel(request):

@@ -4,14 +4,52 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row col-9 m-auto d-flex flex-column pt-5" style="height: 500px;">
+    <div class="row col-11 col-md-9 m-auto d-flex flex-column pt-5" id="divInfoPersonal" style="height: 500px;">
         <div class="col-12 py-4 px-3 col-md-8 col-lg-6 mx-auto border rounded d-flex flex-column">
             <p>Usuario: {{ usuario.username }}</p>
             <p>Nombre: {{ usuario.first_name }}</p>
             <p>Apellido: {{ usuario.last_name }}</p>
             <p>Correo: {{ usuario.email }}</p>
+            <button class="btn btn-primary col-10 col-md-6 mt-3 m-auto" type="button" id="btnModificarInfoPersonal"
+                onClick="modificar()">Modificar</button>
         </div>
     </div>
-
 </div>
+
+<script>
+    document.getElementById('btnModificarInfoPersonal').addEventListener('click', function () {
+        const divInfo = document.getElementById('divInfoPersonal');
+        const formInfo = document.createElement('div');
+        formInfo.innerHTML = `
+            <form method='POST' class="col-12 py-4 px-3 col-md-8 col-lg-6 mx-auto border rounded d-flex flex-column">
+                {% csrf_token %}
+                <div class="col-12 mx-auto d-flex flex-column">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de usuario</label>
+                        <input name="username" type="text" class="form-control" value="{{ usuario.username }}" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">Nombre</label>
+                        <input name="first_name" type="text" class="form-control" value="{{ usuario.first_name }}" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Apellido</label>
+                        <input name="last_name" type="text" class="form-control" value="{{ usuario.last_name }}" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo:</label>
+                        <input name="email" type="text" class="form-control" value="{{ usuario.email }}" />
+                    </div>
+                    <div class="my-3 d-flex justify-content-evenly">
+                        <button type="submit" class="btn btn-primary col-10">Modificar</button>
+                    </div>
+                </div>
+            </form>
+        `;
+        divInfo.innerHTML = '';
+        divInfo.appendChild(formInfo)
+    })
+
+</script>
+
 {% endblock %}
