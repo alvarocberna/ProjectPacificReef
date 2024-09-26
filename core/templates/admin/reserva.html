@@ -4,9 +4,37 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row col-9 m-auto d-flex flex-column pt-5" style="height: 500px;">
-        Reserva
-    </div>
+    <form method='POST' class="col-12 py-4 px-3 col-md-8 col-lg-6 mx-auto my-5 border rounded d-flex flex-column">
+        {% csrf_token %}
+        <div class="col-12 mx-auto d-flex flex-column">
+            {{ data }}
+            <div class="mb-3">
+                <label for="fecha_ingreso" class="form-label">Fecha de ingreso</label>
+                <input name="fecha_ingreso" type="date" class="form-control" value="{{ reserva.fecha_ingreso }}" />
+            </div>
+            <div class="mb-3">
+                <label for="fecha_salida" class="form-label">Fecha de salida:</label>
+                <input name="fecha_salida" type="date" class="form-control" value="{{ reserva.fecha_salida }}" />
+            </div>
+            <div class="mb-3">
+                <label for="cantidad_personas" class="form-label">Cantidad de personas:</label>
+                <input name="cantidad_personas" type="number" class="form-control"
+                    value="{{ reserva.cantidad_personas }}" />
+            </div>
+            <div class="mb-3">
+                <label for="cod_habitacion" class="form-label">Número de habitación:</label>
+                <input name="cod_habitacion" type="number" class="form-control"
+                    value="{{ reserva.cod_habitacion.cod_habitacion }}" />
+            </div>
+            <div class="mb-3">
+                <label for="rut" class="form-label">Rut cliente:</label>
+                <input name="rut" type="number" class="form-control" value="{{ reserva.rut.id }}" />
+            </div>
+            <div class="my-3 d-flex justify-content-evenly">
+                <button type="submit" class="btn btn-primary col-10">Modificar</button>
+            </div>
+        </div>
+    </form>
 
 </div>
 {% endblock %}

@@ -4,7 +4,22 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row col-9 m-auto d-flex flex-column pt-5" style="height: 500px;">
+    <div class="row col-9 m-auto d-flex flex-column pt-5">
+        {% for res in reservas %}
+        <div class="col-10 border m-auto px-3 py-1 mb-2 d-flex flex-column flex-md-row">
+            <div class="col-12 col-md-4  d-flex align-items-center">
+                <p class="h5 mb-0  mb-0">Habitación n°{{ res.cod_habitacion.cod_habitacion }}</p>
+            </div>
+            <div class="col-12 col-md-5">
+                <p class="mb-0">Fecha ingreso: {{ res.fecha_ingreso }}</p>
+                <p class="mb-0">Fecha salida: {{ res.fecha_salida }}</p>
+                <p class="mb-0">Cliente: {{ res.rut.first_name }} {{res.rut.last_name}}</p>
+            </div>
+            <a class="col-12 col-md-3 btn btn-primary my-3" href="{% url 'gestionarReserva' res.cod_reserva %}">
+                Modificar
+            </a>
+        </div>
+        {% endfor %}
 
     </div>
 

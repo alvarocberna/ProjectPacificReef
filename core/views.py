@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Habitacion, UserProfile, Hotel, Categoria_Habitacion, Reserva
-from .forms import FormRegistro, FormInicioSesion, FormHabitacion, FormDatosPersonales
+from .forms import FormRegistro, FormInicioSesion, FormHabitacion, FormDatosPersonales, FormReserva
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
@@ -231,17 +231,45 @@ def verReservas(request):
 def gestionarReservas(request):
     usuario = request.user
     rol = UserProfile.objects.get(user = usuario).role
+    reservas = Reserva.objects.all()
     context = {
         'rol': rol,
+        'reservas': reservas
     }
     return render(request, 'admin/reservas.html', context)
 
-def gestionarReserva(request):
+def gestionarReserva(request, id):
     usuario = request.user
     rol = UserProfile.objects.get(user = usuario).role
+    reserva = Reserva.objects.get(cod_reserva = id)
     context = {
         'rol': rol,
+        'reserva': reserva
     }
+    if request.method == 'POST':
+        context2 = {
+            'rol': rol,
+            'reserva': reserva,
+        }
+        fechaIngresoInput = request.POST['fecha_ingreso']
+        fechaSalidaInput = request.POST['fecha_salida']
+        fechaIngresoFormat = datetime.strptime(fechaIngresoInput, '%Y-%m-%d')
+        fechaSalidaFormat = datetime.strptime(fechaSalidaInput, '%Y-%m-%d')
+        fechaIngreso = fechaIngresoFormat.strftime('%Y-%m-%d')
+        fechaSalida = fechaSalidaFormat.strftime('%Y-%m-%d')
+        rut = User.objects.get(pk=request.POST['rut'])
+        cod_habitacion = Habitacion.objects.get(pk=request.POST['cod_habitacion'])
+        datos = {
+                'fecha_ingreso': fechaIngreso,
+                'fecha_salida': fechaSalida, 
+                'cantidad_personas': request.POST['cantidad_personas'],
+                'rut': rut,
+                'cod_habitacion': cod_habitacion
+                }
+        form = FormReserva(data=datos, instance=reserva) 
+        if form.is_valid:
+            form.save()
+        return render(request, 'admin/reserva.html', context2)
     return render(request, 'admin/reserva.html', context)
 
 def perfil(request):

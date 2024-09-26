@@ -28,3 +28,11 @@ class FormDatosPersonales(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
+
+class FormReserva(ModelForm):
+    class Meta:
+        model = Reserva
+        # fields = ['cantidad_personas']
+        fields = ['fecha_ingreso', 'fecha_salida', 'cantidad_personas', 'rut', 'cod_habitacion']
+        # fields = ['fecha_ingreso', 'fecha_salida']
+        # fields = ['fecha_ingreso', 'fecha_salida', 'cantidad_personas', 'rut', 'cod_habitacion']
