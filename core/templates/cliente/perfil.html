@@ -3,9 +3,11 @@
 {% block title %} Datos personales {% endblock %}
 
 {% block content %}
+{% load static %}
 <div class="container-fluid">
     <div class="row col-11 col-md-9 m-auto d-flex flex-column pt-5" id="divInfoPersonal">
         <div class="col-12 py-4 px-3 col-md-8 col-lg-6 mx-auto border rounded d-flex flex-column">
+            <img src="{% static 'imgs/img_user.png' %}" style="height: 100px; width: 100px;" class="m-auto mb-3" />
             <p>Usuario: {{ usuario.username }}</p>
             <p>Nombre: {{ usuario.first_name }}</p>
             <p>Apellido: {{ usuario.last_name }}</p>

@@ -15,8 +15,8 @@
     <form method="POST" class="row col-10 mb-5 col-lg-9 m-auto d-flex flex-column">
         {% csrf_token %}
         <h4 class="mb-3">1 - Seleccionar fecha</h4>
-        <div class="d-flex flex-column flex-lg-row justify-content-around">
-            <div class="form-group col-12 col-md-5">
+        <div class="d-flex flex-column flex-lg-row justify-content-start mb-5">
+            <div class="form-group col-12 col-md-5 me-0 me-md-3">
                 <label for="dateIngreso">Fecha inicio:</label>
                 <input type="date" class="form-control" name="dateIngreso" id="dateIngreso"
                     placeholder="Selecciona una fecha">
@@ -26,6 +26,20 @@
                 <input type="date" class="form-control" name="dateSalida" id="dateSalida"
                     placeholder="Selecciona una fecha">
             </div>
+        </div>
+        <h4 class="mb-3">2 - Seleccionar tipo de habitacion</h4>
+        <div class="mb-5 ">
+            <select type="number" name="categoria_habitacion" class="col-12 col-md-6 col-lg-4 rounded py-2">
+                <option type="number" value="1">Habitación Turista</option>
+                <option type="number" value="2">Habitacion Premium</option>
+            </select>
+        </div>
+        <h4 class="mb-3">3 - Seleccionar capacidad</h4>
+        <div class="mb-5">
+            <select name="cantidad_personas" class="col-12 col-md-6 col-lg-4 rounded py-2">
+                <option value="2">2 personas</option>
+                <option value="4">4 personas</option>
+            </select>
         </div>
         <button type="submit" class="col-10 col-md-6 col-lg-3 m-auto my-5 btn btn-primary">Buscar</button>
     </form>

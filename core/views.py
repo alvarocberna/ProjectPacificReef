@@ -8,6 +8,7 @@ from django.utils import timezone
 from datetime import datetime
 from django.contrib import messages
 
+# Visita
 def base(request):
     usuario = request.user
     profile = UserProfile.objects.get(user = usuario)
@@ -87,6 +88,8 @@ def inicioSesion(request):
 def inicio(request):
     return render(request, 'inicio.html')
 
+#Cliente
+
 def reservarHabitacion(request):
     usuario = request.user
     rol = UserProfile.objects.get(user = usuario).role
@@ -112,8 +115,13 @@ def reservarHabitacion(request):
                 numHabReservadas.append(res.cod_habitacion)
             elif ((fechaSalida >= res.fecha_ingreso.strftime('%d-%m-%Y')) and (fechaSalida <= res.fecha_salida.strftime('%d-%m-%Y'))):
                 numHabReservadas.append(res.cod_habitacion)
+        #Filtramos las habitaciones por tipo de habitacion
+        habFiltroTipo = Habitacion.objects.filter(cod_categoria = request.POST['categoria_habitacion'])
+        #Filtramos las habitaciones por capadiad
+        habFiltroCapacidad = habFiltroTipo.filter(capacidad = request.POST['cantidad_personas'])
+        # Creamos un arr donde añadiremos las habitaciones disponibles
         habDisponibles = []
-        for hab in Habitacion.objects.all():
+        for hab in habFiltroCapacidad:
             habDisponibles.append(hab)
         for hab in habDisponibles:
             for num in numHabReservadas:
@@ -163,6 +171,42 @@ def confirmarReserva(request, id):
         return redirect('/mis-reservas')
     return render(request, 'cliente/confirmar-reserva.html', context)
 
+def verReservas(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    reservas = Reserva.objects.filter(rut = usuario.id)
+    context = {
+        'rol': rol,
+        'reservas': reservas,
+    }
+    return render(request, 'cliente/reservas.html', context)
+
+def perfil(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    context = {
+        'usuario': usuario,
+        'rol': rol,
+    }
+    if request.method == 'POST':
+        formDatosPersonales = FormDatosPersonales(data=request.POST, instance=usuario)
+        if formDatosPersonales.is_valid:
+            formDatosPersonales.save() 
+    return render(request, 'cliente/perfil.html', context)
+
+# Administrador
+
+def habitaciones(request):
+    usuario = request.user
+    rol = UserProfile.objects.get(user = usuario).role
+    habitaciones = Habitacion.objects.all()
+    context = {
+        'habitaciones': habitaciones,
+        'usuario': usuario,
+        'rol': rol,
+    }
+    return render(request, 'admin/habitaciones.html', context)
+
 def habitacion(request, id):
     habitacion = Habitacion.objects.get(cod_habitacion = id)
     usuario = request.user
@@ -176,7 +220,7 @@ def habitacion(request, id):
         formulario = FormHabitacion(data=request.POST, instance=habitacion)
         if formulario.is_valid:
             formulario.save() 
-    return render(request, 'cliente/habitacion.html', context)
+    return render(request, 'admin/habitacion.html', context)
 
 def addHabitacion(request):
     usuario = request.user
@@ -205,28 +249,6 @@ def addHabitacion(request):
                                                 )
         newHabitacion.save()
     return render(request, 'admin/addhabitacion.html', context)
-
-
-def habitaciones(request):
-    usuario = request.user
-    rol = UserProfile.objects.get(user = usuario).role
-    habitaciones = Habitacion.objects.all()
-    context = {
-        'habitaciones': habitaciones,
-        'usuario': usuario,
-        'rol': rol,
-    }
-    return render(request, 'cliente/habitaciones.html', context)
-
-def verReservas(request):
-    usuario = request.user
-    rol = UserProfile.objects.get(user = usuario).role
-    reservas = Reserva.objects.filter(rut = usuario.id)
-    context = {
-        'rol': rol,
-        'reservas': reservas,
-    }
-    return render(request, 'cliente/reservas.html', context)
 
 def gestionarReservas(request):
     usuario = request.user
@@ -272,19 +294,6 @@ def gestionarReserva(request, id):
         return render(request, 'admin/reserva.html', context2)
     return render(request, 'admin/reserva.html', context)
 
-def perfil(request):
-    usuario = request.user
-    rol = UserProfile.objects.get(user = usuario).role
-    context = {
-        'usuario': usuario,
-        'rol': rol,
-    }
-    if request.method == 'POST':
-        formDatosPersonales = FormDatosPersonales(data=request.POST, instance=usuario)
-        if formDatosPersonales.is_valid:
-            formDatosPersonales.save() 
-    return render(request, 'cliente/perfil.html', context)
-
 def panel(request):
     usuario = request.user
     rol = UserProfile.objects.get(user = usuario).role
@@ -292,6 +301,16 @@ def panel(request):
         'rol': rol
     }
     return render(request, 'admin/panel.html', context)
+
+def delHabitacion(request, id):
+    habitacion = Habitacion.objects.get(cod_habitacion = id)
+    habitacion.delete()
+    return redirect('/panel')
+
+def delReserva(request, id):
+    reserva = Reserva.objects.get(cod_reserva = id)
+    reserva.delete()
+    return redirect('/reservas')
 
 def cerrarSesion(request):
     logout(request)

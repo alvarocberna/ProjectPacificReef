@@ -7,12 +7,17 @@
     <div class="row col-8 m-auto d-flex flex-column pt-5">
         <h2 class="h2 mb-5">Mis reservas</h2>
         {% for reserva in reservas %}
-        <div class="border rounded col-12 m-auto px-3 py-4 mb-3" style="background-color: #82D8DD;">
-            <div class="col-12 col-md-9 m-auto">
-                <p class="h5 mb-3">Habitacion n° {{ reserva.cod_habitacion.cod_habitacion }}</p>
-                <p class="mb-1">Fecha de ingreso: {{ reserva.fecha_ingreso }}</p>
-                <p class="mb-1">Fecha de salida: {{ reserva.fecha_salida }}</p>
-                <p class="mb-1">Número de personas: {{ reserva.cantidad_personas }}</p>
+        <div class="col-12 border rounded m-auto px-3 py-1 mb-2 d-flex flex-column flex-md-row">
+            <div class="col-12 col-md-4  d-flex align-items-center">
+                <p class="h5 mb-0  mb-0">Habitación n°{{ reserva.cod_habitacion.cod_habitacion }}</p>
+            </div>
+            <div class="col-12 col-md-5">
+                <p class="mb-0">Fecha ingreso: {{ reserva.fecha_ingreso }}</p>
+                <p class="mb-0">Fecha salida: {{ reserva.fecha_salida }}</p>
+                <p class="mb-0">Número de personas: {{ reserva.cantidad_personas }}</p>
+            </div>
+            <div class="col-12 col-md-2">
+                <img src="{{ reserva.cod_habitacion.img1_habitacion.url }}" class="w-75 rounded" />
             </div>
         </div>
         {% endfor %}
