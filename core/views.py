@@ -231,7 +231,7 @@ def addHabitacion(request):
     }
     if request.method == 'POST':
         hotel = Hotel.objects.get(pk=1)
-        if request.POST["cod_categoria"] == 1:
+        if request.POST["cod_categoria"] == '1':
             categoria = Categoria_Habitacion.objects.get(pk=1)
         else:
             categoria = Categoria_Habitacion.objects.get(pk=2)
@@ -241,9 +241,10 @@ def addHabitacion(request):
                                                     capacidad = request.POST["capacidad"],
                                                     piso = request.POST["piso"],
                                                     equipamiento = request.POST["equipamiento"],
-                                                    img1_habitacion = request.POST["img1_habitacion"],
-                                                    img2_habitacion = request.POST["img2_habitacion"],
-                                                    img3_habitacion = request.POST["img3_habitacion"],
+                                                    img1_habitacion = 'habitaciones/img_habitacion_turista_1.jpg',
+                                                    img2_habitacion = 'habitaciones/img_habitacion_turista_2.jpg',
+                                                    img3_habitacion = 'habitaciones/img_habitacion_turista_3.jpg',
+                                                    # img3_habitacion = request.POST["img3_habitacion"],
                                                     cod_hotel = hotel,
                                                     cod_categoria = categoria,
                                                 )

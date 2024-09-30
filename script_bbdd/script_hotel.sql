@@ -22,6 +22,7 @@ INSERT INTO CORE_HOTEL VALUES(1, 'Hotel Pacific Reef', 'San Martin 50, Viña del 
 INSERT INTO CORE_CATEGORIA_HABITACION VALUES(1, 'Turista', '30000');
 INSERT INTO CORE_CATEGORIA_HABITACION VALUES(2, 'Premium', '70000');
 
+
 INSERT INTO CORE_HABITACION VALUES(11, 'Habitación turista', 2, 1, 'Equpado con 2 camas individuales, baño personal, televisión, cable', 'habitaciones/img_habitacion_turista_1.jpg', 'habitaciones/img_habitacion_turista_2.jpg', 'habitaciones/img_habitacion_turista_3.jpg', 1, 1);
 INSERT INTO CORE_HABITACION VALUES(12, 'Habitación turista', 2, 1, 'Equpado con 2 camas individuales, baño personal, televisión, cable', 'habitaciones/img_habitacion_turista_1.jpg', 'habitaciones/img_habitacion_turista_2.jpg', 'habitaciones/img_habitacion_turista_3.jpg', 1, 1);
 INSERT INTO CORE_HABITACION VALUES(13, 'Habitación turista', 2, 1, 'Equpado con 2 camas individuales, baño personal, televisión, cable', 'habitaciones/img_habitacion_turista_1.jpg', 'habitaciones/img_habitacion_turista_2.jpg', 'habitaciones/img_habitacion_turista_3.jpg', 1, 1);
