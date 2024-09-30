@@ -14,18 +14,13 @@
 
     <div class="row d-flex m-auto col-10 col-md-9" style="cursor: pointer;">
         {% for habD in habDisponibles %}
-        <a href="{% url 'confirmarReserva' habD.cod_habitacion %}" class="col-1 border mx-1 rounded mb-1"
+        <a href="{% url 'confirmarReserva' habD.cod_habitacion %}" class="col-3 col-md-1 border mx-1 rounded mb-2"
             style="text-decoration: none; background-color: #84EB57; color: black">
             <p class="text-center my-2">{{ habD.cod_habitacion }}</p>
         </a>
         {% endfor %}
     </div>
 
-    <div class="row col-10 col-md-9 m-auto my-5">
-        <h3 class="h2">
-            Habitaciones no disponibles
-        </h3>
-    </div>
 
 </div>
 

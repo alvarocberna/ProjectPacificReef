@@ -4,20 +4,21 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row col-8 m-auto d-flex flex-column pt-5">
+    <div class="row col-11 col-md-9 m-auto d-flex flex-column pt-5">
         <h2 class="h2 mb-5">Mis reservas</h2>
         {% for reserva in reservas %}
         <div class="col-12 border rounded m-auto px-3 py-1 mb-2 d-flex flex-column flex-md-row">
             <div class="col-12 col-md-4  d-flex align-items-center">
                 <p class="h5 mb-0  mb-0">Habitación n°{{ reserva.cod_habitacion.cod_habitacion }}</p>
             </div>
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-5 mb-2 mb-md-0">
                 <p class="mb-0">Fecha ingreso: {{ reserva.fecha_ingreso }}</p>
                 <p class="mb-0">Fecha salida: {{ reserva.fecha_salida }}</p>
                 <p class="mb-0">Número de personas: {{ reserva.cantidad_personas }}</p>
             </div>
             <div class="col-12 col-md-2">
-                <img src="{{ reserva.cod_habitacion.img1_habitacion.url }}" class="w-75 rounded" />
+                <img src="{{ reserva.cod_habitacion.img1_habitacion.url }}" class="col-12 col-md-9 rounded"
+                    style="max-height: 150px; object-fit: cover;" />
             </div>
         </div>
         {% endfor %}
